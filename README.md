@@ -1,1 +1,3 @@
 # crypto
+Team:
+* Stephanie Ng
