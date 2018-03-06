@@ -2,7 +2,21 @@ body {
 	background-color: #1A405A;
 }
 
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	text-decoration: none;
+	color: white;
+}
+.btn-color {
+	background-color: #F46036;
+}
+
 .btn-login {
+/*	background-color: #F46036;*/
 	position: absolute;
 	right: 0;
 	z-index: 99;
@@ -10,6 +24,14 @@ body {
 
 .btn-login-wrapper {
 	position: relative;
+}
+
+#btn-signup {
+	/*background-color: #F46036;*/
+	position: absolute;
+	bottom: 10%;
+	right: 25%;
+	z-index: 99;
 }
 
 .header-img {
@@ -22,3 +44,39 @@ body {
 	background-color: #F7F5F2;
 	position: relative;
 }
+
+#product {
+			width: 280px;
+			position: absolute;
+			top: 8%;
+			right: 14%;
+}
+
+
+
+/*CSS for signup page*/
+
+		#outercontainer {
+			width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+			font-family: 'Open Sans', sans-serif;
+			color: white;
+			font-size: 25px;
+			font-weight: bolder;
+			text-align: center;
+
+		}
+
+		#outercontainer hr {
+			border-color: #F46036;
+			/*position: absolute;*/
+			/*top: 50px;*/
+			
+		}
+
+
+		#innerdiv {
+
+		}
