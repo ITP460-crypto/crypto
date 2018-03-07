@@ -22,3 +22,19 @@ body {
 	background-color: #F7F5F2;
 	position: relative;
 }
+
+.form-signup label {
+  color: white;
+}
+
+.form-signup p {
+  color: white;
+}
+
+.form-signup-wrapper {
+  background-color: 15334B;
+}
+
+.title-signup {
+  color: white;
+}
