@@ -58,7 +58,7 @@ public class Indicators {
 
 	public static ArrayList<Candlestick> candlesticks(float[] prices, int period) {
 		ArrayList<Candlestick> candlesticks = new ArrayList<Candlestick>();
-		float open = prices[]
+		float open = prices
 		for (int i = 0; i < prices.length; i++) {
 			for (int n = i; n < i + period; n++) {
 				
