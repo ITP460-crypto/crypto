@@ -1,0 +1,49 @@
+/*CSS for dashboard page*/
+.container {
+	color: inherit;
+}
+.form-dashboard-wrapper {
+  	background-color: #15334b;
+  	height: 300px; }
+
+.title-dashboard {
+ 	color: white;
+  	font-weight: bolder; }
+
+.modal-content{
+	color: black;
+}
+
+.form-check{
+	margin-left: 10%;
+	float: left;
+}
+
+.form-row{
+	margin-bottom: 5%;
+}
+
+#addcoins{
+	position: relative;
+	left: 3%;
+}
+
+h5{
+	font-size: 0.6em;
+	margin-left: 10%; 
+}
+
+.modal-dialog{
+	max-width: 800px;
+}
+
+.col-form-label{
+	width: 11%;
+	line-height: 1;
+	padding-top: 0;
+  	padding-bottom: 0;
+}
+
+#indicators{
+	margin-left: 10%;
+}

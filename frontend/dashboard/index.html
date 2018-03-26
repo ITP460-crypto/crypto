@@ -1,11 +1,12 @@
 <html>
-	<head>
-			<link href="/account/account.css" rel="stylesheet">
-		<link href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
-		<title>Dashboard</title>
-	</head>
-	<body>
-		<nav>
+<head>
+	<link href="/account/account.css" rel="stylesheet">
+	<link href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
+	<link href="dashboard.css" rel="stylesheet">
+	<title>Dashboard</title>
+</head>
+<body>
+	<nav>
 		<ul class="nav nav-pills justify-content-end fixed-top">
 			<li class="nav-logo">
 				<img src="/cia-logo.png" alt="CIA-logo">
@@ -17,16 +18,119 @@
 				<a class="nav-link active" href="/dashboard/index.html">DASHBOARD</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="index.html">MY ACCOUNT</a>
+				<a class="nav-link" href="/account/index.html">MY ACCOUNT</a>
 			</li>
 		</ul>
 	</nav>
-		<div class="container">
-			<div class="row">
-				<div class="col-6 dashboard">
-					<div class="col-6">dashboard</div>
-				</div>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="form-dashboard-wrapper col-8 m-5 p-5">
+				<h1 class="title-dashboard">Dashboard</h1>
 			</div>
 		</div>
+
+		<div class="btn-login-wrapper row justify-content-center">
+			<button type="button" class="btn btn-primary w-25 m-5" data-toggle="modal" data-target="#loginModal">ADD COINS</button>
+		</div>
+
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="loginModalLabel">ADD COINS</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+					<div class="modal-body">
+						<form id="addcoins">
+							<div class="form-row" id="indicators">
+								<h5>OBV</h5>     
+								<h5>A/D</h5>
+								<h5>ADX</h5>
+								<h5>AROON</h5>
+								<h5>MACD</h5>
+								<h5>RSI</h5>
+								<h5>STOCHASTIC</h5>
+							</div>
+							<div class="form-row">
+								<label for="BTCUSD" class="col-form-label">BTC/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+
+							<div class="form-row">
+								<label for="ETHUSD" class="col-form-label">ETH/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+
+							<div class="form-row">
+								<label for="LTCUSD" class="col-form-label">LTC/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+
+							<div class="form-row">
+								<label for="XRPUSD" class="col-form-label">XRP/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+
+							<div class="form-row">
+								<label for="BCHUSD" class="col-form-label">BCH/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+
+							<div class="form-row">
+								<label for="ETCUSD" class="col-form-label">ETC/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+						</form>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">ADD</button>
+					</div>
+				</div>
+			</div>
+		</div><!--close container-->
+	</div>
+		<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/js/popper.min.js"></script>
+		<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 	</body>
-</html>
+	</html>
