@@ -6,4 +6,3 @@ Team:
 * Susan Yishan Zheng
 * Winny Huang
 
-hello
