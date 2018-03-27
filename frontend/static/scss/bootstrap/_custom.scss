@@ -28,7 +28,11 @@ a:hover {
   position: absolute;
   top: 580;
   right: 165;
-	z-index: 99;
+  z-index: 99;
+}
+
+#navbar {
+  border-bottom: 2px solid $primary;
 }
 
 .header-img {
