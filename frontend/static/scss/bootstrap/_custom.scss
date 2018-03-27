@@ -29,6 +29,10 @@ a:hover {
 	z-index: 99;
 }
 
+.navbar {
+  border-bottom: 2px solid $primary;
+}
+
 .header-img {
 	position: absolute;
   top: 50%;

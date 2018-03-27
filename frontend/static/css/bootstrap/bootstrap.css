@@ -6051,6 +6051,9 @@ a:hover {
   right: 25%;
   z-index: 99; }
 
+.navbar {
+  border-bottom: 2px solid #F46036; }
+
 .header-img {
   position: absolute;
   top: 50%;
