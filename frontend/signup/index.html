@@ -1,19 +1,25 @@
 <html>
 	<head>
+	<link href="account.css" rel="stylesheet">
+	<!-- account.css has the css for nav bar aka the header -->
+
 		<link href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="container">
-			<nav class="navbar">
-				<a class="navbar-brand" href="/">
-					CIA
-				</a>
-				<div>
-					<button class="btn btn-primary p-1">My Account</button>
-					<button class="btn btn-primary p-1">Dashboard</button>
-				</div>
+			<nav>
+				<ul id="navbar" class="nav nav-pills justify-content-end fixed-top p-2">
+					<li class="nav-logo">
+					<img src="/cia-logo.png" alt="CIA-logo">
+					</li>
+					<li class="nav-logo-text">
+					<a class="nav-link" href="/">CRYPTO INDICATOR ALERT</a>
+					</li>
+					<li class="float-right">
+						<button class="btn btn-primary p-1">My Account</button>
+						<button class="btn btn-primary p-1">Dashboard</button>
+					</li>
+				</ul>
 			</nav>
-		</div>
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="form-signup-wrapper col-6 m-5 p-5">
@@ -28,8 +34,8 @@
 							<input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
 						</div>
 						<div class="form-group">
-							<label for="password" class="col-form-label">Confirm Password</label>
-							<input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
+							<label for="confirm-pw" class="col-form-label">Confirm Password</label>
+							<input type="confirm-pw" class="form-control" id="confirm-pw" aria-describedby="confirm-pwHelp">
 						</div>
 						<div class="form-group">
 							<label for="tel" class="col-form-label">Phone Number</label>
@@ -42,6 +48,8 @@
 			<div class="row justify-content-center">
 				<div class="form-signup-wrapper col-6 m-2 p-5">
 					<h1 class="title-signup">Notifications</h1>
+					<p>Check the boxes below to receive email and/or text notifications when your favorite crypto currency changes significantly!</p>
+				<p><em>Date rates may apply</em></p>
 					<form class="form-signup">
 						<p>I would like to receive:</p>
 						<div class="form-check">
@@ -62,7 +70,7 @@
 		</div>
 		<footer class="footer">
 			<div class="row justify-content-center">
-				<button class="btn btn-danger w-25 m-5">Sign Up</button>
+				<button class="btn btn-primary w-25 m-5"><a href="/newuser_dashboard/index.html">Sign Up</a></button>
 			</div>
 		</footer>
 		<script type="text/javascript" src="/static/js/jquery.min.js"></script>

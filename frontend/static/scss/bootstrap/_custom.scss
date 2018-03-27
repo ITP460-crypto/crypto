@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Assistant');
+
 body {
 	background-color: $secondary;
 }
@@ -22,14 +24,14 @@ a:hover {
 	position: relative;
 }
 
-#btn-signup {
-	position: absolute;
-	bottom: 10%;
-	right: 25%;
-	z-index: 99;
+.btn-signup {
+  position: absolute;
+  top: 580;
+  right: 165;
+  z-index: 99;
 }
 
-.navbar {
+#navbar {
   border-bottom: 2px solid $primary;
 }
 
@@ -89,6 +91,21 @@ a:hover {
 }
 
 
-#innerdiv {
-
+/*CSS for account page*/
+.container{
+  color: white;
 }
+
+h1{
+  text-align: center;
+  text-transform: uppercase;
+}
+
+button{
+  text-transform: uppercase;
+}
+
+nav{
+  margin: 10px;
+}
+
