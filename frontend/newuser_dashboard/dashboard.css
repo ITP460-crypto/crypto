@@ -4,7 +4,7 @@
 }
 .form-dashboard-wrapper {
   	background-color: #15334b;
-  	height: 300px; }
+}
 
 .title-dashboard {
  	color: white;
@@ -47,3 +47,34 @@ h5{
 #indicators{
 	margin-left: 10%;
 }
+
+path.candle {
+	stroke: #FFFFFF;
+}
+
+path.candle.body {
+	stroke-width: 0;
+}
+
+path.candle.up {
+	fill: #00AA00;
+	stroke: #00AA00;
+}
+
+path.candle.down {
+	fill: #FF0000;
+	stroke: #FF0000;
+}
+
+path.domain {
+	stroke: #FFFFFF;
+}
+
+.axis {
+	stroke: #FFFFFF;
+}
+
+line {
+	stroke: #FFFFFF;
+}
+
