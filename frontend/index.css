@@ -1,0 +1,11 @@
+.header-img{
+	padding: 130px;
+}
+
+.logo-name{
+	position: absolute;
+	left: 19%;
+	font-family: avenir;
+	top: 550px;
+	font-size: 2em;
+}

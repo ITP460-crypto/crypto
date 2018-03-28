@@ -1,4 +1,8 @@
 /*CSS for dashboard page*/
+#navbar{
+	border-bottom: 2px #F46036 solid;
+}
+
 .container {
 	color: inherit;
 }
