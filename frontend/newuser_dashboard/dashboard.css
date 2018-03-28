@@ -18,8 +18,13 @@
 	color: black;
 }
 
+.modal-title{
+	padding-left: 30%;
+	font-size: 1.5em;
+}
+
 .form-check{
-	margin-left: 10%;
+	margin-left: 8%;
 	float: left;
 }
 
@@ -34,7 +39,7 @@
 
 h5{
 	font-size: 0.6em;
-	margin-left: 10%; 
+	margin-left: 9%; 
 }
 
 .modal-dialog{
@@ -49,7 +54,7 @@ h5{
 }
 
 #indicators{
-	margin-left: 10%;
+	margin-left: 22%;
 }
 
 path.candle {
