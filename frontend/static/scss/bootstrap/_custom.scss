@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family=Assistant');
+
+body {
+	background-color: $secondary;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.btn-login {
+	position: absolute;
+	right: 0;
+	z-index: 99;
+}
+
+.btn-login-wrapper {
+	position: relative;
+}
+
+.btn-signup {
+  position: absolute;
+  top: 580;
+  right: 165;
+  z-index: 99;
+}
+
+#navbar {
+  border-bottom: 2px solid $primary;
+}
+
+.header-img {
+	position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-img-wrapper {
+	background-color: #F7F5F2;
+	position: relative;
+}
+
+.form-signup label {
+  color: white;
+}
+
+.form-signup p {
+  color: white;
+}
+
+.form-signup-wrapper {
+  background-color: 15334B;
+}
+
+.section-title {
+  color: white;
+}
+
+#product {
+  width: 280px;
+  position: absolute;
+  top: 8%;
+  right: 14%;
+}
+
+/*CSS for signup page*/
+
+#outercontainer {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 25px;
+  font-weight: bolder;
+  text-align: center;
+
+}
+
+#outercontainer hr {
+  /*position: absolute;*/
+  /*top: 50px;*/
+
+}
+
+
+/*CSS for account page*/
+.container{
+  color: white;
+}
+
+h1{
+  text-align: center;
+  text-transform: uppercase;
+}
+
+button{
+  text-transform: uppercase;
+}
+
+nav{
+  margin: 10px;
+}
+

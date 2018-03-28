@@ -1,0 +1,112 @@
+<html>
+<head>
+	<link href="/newuser_dashboard/dashboard.css" rel="stylesheet">
+	<link href="../signup/account.css" rel="stylesheet">
+	<link href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+	<nav>
+		<ul id="navbar" class="nav nav-pills justify-content-end fixed-top p-2">
+			<li class="nav-logo">
+				<a href="/newuser_dashboard/index.html">
+			<img src="/cia-logo.png" alt="CIA-logo">
+			</li>
+		</a>
+			<li class="nav-logo-text">
+			<a class="nav-link" href="/newuser_dashboard/index.html">CRYPTO INDICATOR ALERT</a>
+			</li>
+			<li class="float-right">
+				<a href="/newuser_dashboard" class="btn btn-primary p-1">Dashboard</a>
+				<a href="/account" class="btn btn-primary p-1">My Account</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="form-signup-wrapper col-6 m-5 p-5">
+				<h1 class="section-title">Account</h1>
+				<form class="form-signup">
+					<div class="form-group">
+						<label for="email" class="col-form-label">Email</label>
+						<input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+					</div>
+					<div class="form-group">
+						<label for="password" class="col-form-label">Password</label>
+						<input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
+					</div>
+					<div class="form-group">
+						<label for="password" class="col-form-label">Confirm Password</label>
+						<input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
+					</div>
+					<div class="form-group">
+						<label for="tel" class="col-form-label">Phone Number</label>
+						<input type="tel" class="form-control" id="tel" aria-describedby="telHelp">
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+		<!-- <div class="row justify-content-center">
+			<div class="form-signup-wrapper col-6 m-5 p-5">
+				<h1 class="title-payment">Payment</h1>
+				<form class="form-payment">
+					<div class="form-group">
+						<label for="cc-type" class="col-form-label">Credit Card Type</label>
+						<input type="cc-type" class="form-control" id="cc-type" aria-describedby="cc-typeHelp">
+					</div>
+					<div class="form-group">
+						<label for="cc-name" class="col-form-label">Credit Card Name</label>
+						<input type="cc-name" class="form-control" id="cc-name" aria-describedby="cc-nameHelp">
+					</div>
+					<div class="form-group">
+						<label for="cc-number" class="col-form-label">Credit Card Number</label>
+						<input type="cc-number" class="form-control" id="cc-number" aria-describedby="cc-numberHelp">
+					</div>
+					<div class="form-group">
+						<label foexpDate" class="col-form-label">Expiration Date</label>
+						<input typexpDate" class="form-control" iexpDate" aria-describedby="expDateHelp">
+					</div>
+					<div class="form-group">
+						<label for="cvv" class="col-form-label">CVV</label>
+						<input type="cvv" class="form-control" id="cvv" aria-describedby="cvvHelp">
+					</div>
+				</form>
+			</div>
+		</div> -->
+
+
+		<div class="row justify-content-center">
+			<div class="form-signup-wrapper col-6 m-2 p-5">
+				<h1 class="section-title">Notifications</h1>
+				<p>Check the boxes below to receive email and/or text notifications when your favorite cryptocurrency changes significantly!</p>
+				<p><em>Date rates may apply</em></p>
+				<form class="form-signup">
+					<p>I would like to receive:</p>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="smsNotif">
+						<label class="form-check-label" for="smsNotif">
+							SMS Notifications
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="emailNotif">
+						<label class="form-check-label" for="emailNotif">
+							Email Notifications
+						</label>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="row justify-content-center">
+			<button class="btn btn-primary w-25 m-5">Edit</button>
+		</div>
+	</footer>
+	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/popper.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+</body>
+</html>

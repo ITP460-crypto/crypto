@@ -1,0 +1,34 @@
+nav{
+	position: relative;
+}
+
+nav ul{
+	padding: 15px;
+	background-color: #08415c;
+}
+
+nav li{
+	padding: 5px;
+	
+	
+}
+
+.nav-logo{
+	position: absolute;
+	left: 20px;
+}
+
+img{
+	height: 45px;
+}
+
+.nav-logo-text{
+	position: absolute;
+	left: 60px;
+	font-size:1.2em;
+	font-family: avenir;
+}
+
+.container{
+	margin-top: 50px;
+}

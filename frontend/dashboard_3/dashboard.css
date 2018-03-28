@@ -1,0 +1,117 @@
+/*CSS for dashboard page*/
+#navbar{
+	border-bottom: 2px #F46036 solid;
+}
+
+.container {
+	color: inherit;
+}
+.form-dashboard-wrapper {
+  	background-color: #15334b;
+}
+
+.title-dashboard {
+ 	color: white;
+	padding-bottom: 20px;
+	padding-left: 180px;
+  	font-weight: 900; }
+
+.modal-content{
+	color: black;
+}
+
+.modal-title{
+	padding-left: 30%;
+	font-size: 1.5em;
+}
+
+.form-check{
+	margin-left: 8%;
+	float: left;
+}
+
+.form-row{
+	margin-bottom: 5%;
+}
+
+#addcoins{
+	position: relative;
+	left: 3%;
+}
+
+h5{
+	font-size: 0.6em;
+	margin-left: 9%; 
+}
+
+.modal-dialog{
+	max-width: 800px;
+}
+
+.col-form-label{
+	width: 11%;
+	line-height: 1;
+	padding-top: 0;
+  	padding-bottom: 0;
+}
+
+#indicators{
+	margin-left: 22%;
+}
+
+path.candle {
+	stroke: #FFFFFF;
+}
+
+path.candle.body {
+	stroke-width: 0;
+}
+
+path.candle.up {
+	fill: #00AA00;
+	stroke: #00AA00;
+}
+
+path.candle.down {
+	fill: #FF0000;
+	stroke: #FF0000;
+}
+
+path.domain {
+	stroke: #FFFFFF;
+}
+
+.axis {
+	stroke: #FFFFFF;
+}
+
+line {
+	stroke: #FFFFFF;
+}
+
+.indicator-type-box {
+	background-color: #94B0AB;
+	width: 10px;
+	height: 10px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.indicator-type-wrapper {
+	text-align: center;
+	display: flex;
+}
+
+.indicator-type {
+	margin: 0 10px;
+	width: 60px;
+}
+
+p {
+	color: white;
+	margin: 0;
+}
+
+.graph-wrapper {
+	width: 100%;
+}
