@@ -18,6 +18,11 @@
 	color: black;
 }
 
+.modal-title{
+	padding-left: 30%;
+	font-size: 1.5em;
+}
+
 .form-check{
 	margin-left: 8%;
 	float: left;
