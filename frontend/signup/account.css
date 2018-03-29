@@ -30,3 +30,7 @@ img{
 .container{
 	margin-top: 100px;
 }
+
+#navbar {
+ border-bottom: 2px solid #F46036;
+}
