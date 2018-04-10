@@ -1,0 +1,311 @@
+<html>
+<head>
+	<link href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
+	<link href="dashboard.css" rel="stylesheet">
+	<link href="../signup/account.css" rel="stylesheet">
+	<title>Dashboard</title>
+</head>
+<body>
+	<nav>
+		<ul id="navbar" class="nav nav-pills justify-content-end fixed-top p-2">
+			<li class="nav-logo">
+				<a href="/dashboard/index.html">
+			<img src="/cia-logo.png" alt="CIA-logo">
+			</li>
+		</a>
+			<li class="nav-logo-text">
+			<a class="nav-link" href="/dashboard/index.html">CRYPTO INDICATOR ALERT</a>
+			</li>
+			<li class="float-right">
+				<a href="/dashboard" class="btn btn-primary p-1">Dashboard</a>
+				<a href="/account" class="btn btn-primary p-1">My Account</a>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="container">
+<h1 class="title-dashboard text-center font-weight-bold">Dashboard
+	<button onclick="changeView(3)" class="btn btn-link float-right m-1">
+		<img src="/static/img/dash-icons/3.png" alt="">
+	</button>
+	<button onclick="changeView(2)" class="btn btn-link float-right m-1">
+		<img src="/static/img/dash-icons/2.png" alt="">
+	</button>
+	<button onclick="changeView(1)" class="btn btn-link float-right m-1">
+		<img src="/static/img/dash-icons/1.png" alt="">
+	</button>
+		</h1>
+		<div class="row">
+			<div class="ibox col-12">
+				<div class="indicator-type-wrapper ml-auto">
+					<button class="btn btn-success coin-type text-white" data-toggle="modal" data-target="#notifModal">ETC/USD</button>
+					<div class="indicator-type">
+						<p>OBV</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>A/D</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>ADX</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>AROON</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>MACD</p>
+						<div class="indicator-type-box"></div>
+					</div>
+				</div>
+				<div id="graph1" class="graph-wrapper"></div>
+			</div>
+			<div class="ibox col-12">
+				<div class="indicator-type-wrapper ml-auto">
+					<button class="btn btn-success coin-type text-white" data-toggle="modal" data-target="#notifModal">ETC/USD</button>
+					<div class="indicator-type">
+						<p>OBV</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>A/D</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>ADX</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>AROON</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>MACD</p>
+						<div class="indicator-type-box"></div>
+					</div>
+				</div>
+				<div id="graph2" class="graph-wrapper"></div>
+			</div>
+			<div class="ibox col-12">
+				<div class="indicator-type-wrapper ml-auto">
+					<button class="btn btn-success coin-type text-white" data-toggle="modal" data-target="#notifModal">ETC/USD</button>
+					<div class="indicator-type">
+						<p>OBV</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>A/D</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>ADX</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>AROON</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>MACD</p>
+						<div class="indicator-type-box"></div>
+					</div>
+				</div>
+				<div id="graph3" class="graph-wrapper"></div>
+			</div>
+			<div class="ibox col-12">
+				<div class="indicator-type-wrapper ml-auto">
+					<button class="btn btn-success coin-type text-white" data-toggle="modal" data-target="#notifModal">ETC/USD</button>
+					<div class="indicator-type">
+						<p>OBV</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>A/D</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>ADX</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>AROON</p>
+						<div class="indicator-type-box"></div>
+					</div>
+					<div class="indicator-type">
+						<p>MACD</p>
+						<div class="indicator-type-box"></div>
+					</div>
+				</div>
+				<div id="graph" class="graph-wrapper"></div>
+			</div>
+		</div>
+	</div>
+
+		<div class="btn-login-wrapper row justify-content-center">
+			<button type="button" class="btn btn-primary w-25 m-5" data-toggle="modal" data-target="#loginModal">ADD COINS</button>
+		</div>
+
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="modal-title pl-1" id="loginModalLabel">ADD COINS</span>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+					<div class="modal-body">
+						<form id="addcoins">
+							<div class="form-row" id="indicators">
+								<h5>OBV</h5>     
+								<h5>A/D</h5>
+								<h5>ADX</h5>
+								<h5>AROON</h5>
+								<h5>MACD</h5>
+								<h5>RSI</h5>
+								<h5>STOCHASTIC</h5>
+							</div>
+							<div class="form-row">
+								<input type="checkbox" class="form-check select-pair">
+								<label for="BTCUSD" class="col-form-label">BTC/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+
+							<div class="form-row">
+								<input type="checkbox" class="form-check select-pair">
+								<label for="ETHUSD" class="col-form-label">ETH/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+
+							<div class="form-row">
+								<input type="checkbox" class="form-check select-pair">
+								<label for="LTCUSD" class="col-form-label">LTC/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+
+							<div class="form-row">
+								<input type="checkbox" class="form-check select-pair">
+								<label for="XRPUSD" class="col-form-label">XRP/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+
+							<div class="form-row">
+								<input type="checkbox" class="form-check select-pair">
+								<label for="BCHUSD" class="col-form-label">BCH/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+
+							<div class="form-row">
+								<input type="checkbox" class="form-check select-pair">
+								<label for="ETCUSD" class="col-form-label">ETC/USD</label>
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+								<input type="checkbox" class="form-check">
+							</div>
+						</form>
+					</div>
+
+					<div class="modal-footer">
+						<a href="/dashboard" class="btn btn-primary p-1">ADD</a>
+					</div>
+				</div>
+			</div>
+		</div><!--close container-->
+
+		<div class="modal fade" id="notifModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="modal-title pl-1">MACD</span>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<span class="text-center">Notify me when...</span>
+						<form>
+							<label class="sr-only" for="inlineFormInputGroupUsername2">Period</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">Period</div>
+								</div>
+								<input type="number" class="form-control" placeholder="12">
+							</div>
+							<label class="sr-only" for="inlineFormInputGroupUsername2">Show Zones</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">Show Zones</div>
+								</div>
+								<input type="checkbox" class="form-control m-2" aria-label="Checkbox for following text input">
+							</div>
+							<label class="sr-only" for="inlineFormInputGroupUsername2">Overbought</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">Overbought</div>
+								</div>
+								<input type="number" class="form-control" placeholder="0">
+							</div>
+							<label class="sr-only" for="inlineFormInputGroupUsername2">Oversold</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">Oversold</div>
+								</div>
+								<input type="number" class="form-control" placeholder="0">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary text-uppercase" data-dismiss="modal">Update text alerts</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+		<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/js/popper.min.js"></script>
+		<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+		<script src="http://d3js.org/d3.v4.min.js"></script>
+		<script type="text/javascript" src="/static/js/techan/techan.min.js"></script>
+		<script type="text/javascript" src="./graph.js"></script>
+		<script type="text/javascript" src="./dashboard.js"></script>
+	</body>
+	</html>
+
