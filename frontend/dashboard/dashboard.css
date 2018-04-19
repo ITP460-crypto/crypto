@@ -68,8 +68,8 @@ path.candle.body {
 }
 
 path.candle.up {
-	fill: #00AA00;
-	stroke: #00AA00;
+	fill: #08415c;
+	stroke: #08415c;
 }
 
 path.candle.down {
@@ -77,16 +77,18 @@ path.candle.down {
 	stroke: #FF0000;
 }
 
-path.domain {
-	stroke: #FFFFFF;
+.crosshair {
+	cursor: crosshair;
+	font-size: 10px;
 }
 
-.axis {
-	stroke: #FFFFFF;
+.crosshair path.wire {
+	stroke: #DDDDDD;
+	stroke-dasharray: 1, 1;
 }
 
-line {
-	stroke: #FFFFFF;
+.crosshair .axisannotation path {
+	fill: #DDDDDD;
 }
 
 .indicator-type-box {
@@ -114,4 +116,7 @@ p {
 
 .graph-wrapper {
 	width: 100%;
+	background-color: white;
+	margin: 20px 0;
+	border-radius: 5px;
 }
