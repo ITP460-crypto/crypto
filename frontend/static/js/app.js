@@ -12,6 +12,10 @@ firebase.initializeApp(config);
 function createAccount() {
   var email = $("#email").val()
   var password = $("#password").val()
+  if (password.length < 6) {
+    alert("Your password must be at least 6 characters!")
+    return
+  }
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
     console.log(`Firebase error during createAccount: ${error.code}, ${error.message}`)
     alert("This isn't working right now, try again later.")
