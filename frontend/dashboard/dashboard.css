@@ -1,6 +1,6 @@
 /*CSS for dashboard page*/
 #navbar{
-	border-bottom: 2px #F46036 solid;
+	border-bottom: 2px #f46036 solid;
 }
 
 .container {
@@ -68,25 +68,55 @@ path.candle.body {
 }
 
 path.candle.up {
-	fill: #00AA00;
-	stroke: #00AA00;
+	fill: #08415c;
+	stroke: #08415c;
 }
 
 path.candle.down {
-	fill: #FF0000;
-	stroke: #FF0000;
+	fill: #f46036;
+	stroke: #f46036;
 }
 
-path.domain {
-	stroke: #FFFFFF;
+path.ohlc {
+	stroke: #000000;
+	stroke-width: 1;
 }
 
-.axis {
-	stroke: #FFFFFF;
+path.ohlc.up {
+	stroke: #08415c;
 }
 
-line {
-	stroke: #FFFFFF;
+path.ohlc.down {
+	stroke: #f46036;
+}
+
+path.volume {
+	fill: #EEEEEE;
+}
+
+path.line {
+	stroke: #94b0ab;
+	fill: none;
+	stroke-width: 1;
+}
+
+.extent {
+	fill-opacity: .1;
+	shape-rendering: crispEdges;
+}
+
+.crosshair {
+	cursor: crosshair;
+	font-size: 10px;
+}
+
+.crosshair path.wire {
+	stroke: #DDDDDD;
+	stroke-dasharray: 1, 1;
+}
+
+.crosshair .axisannotation path {
+	fill: #DDDDDD;
 }
 
 .indicator-type-box {
@@ -114,4 +144,7 @@ p {
 
 .graph-wrapper {
 	width: 100%;
+	background-color: white;
+	margin: 20px 0;
+	border-radius: 5px;
 }
