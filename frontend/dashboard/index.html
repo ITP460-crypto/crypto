@@ -17,8 +17,10 @@
 			<a class="nav-link" href="/dashboard/index.html">CRYPTO INDICATOR ALERT</a>
 			</li>
 			<li class="float-right">
+				<p id="accountname" class="p-1" style="float: left;"></p><p class="p-1" style="float: left; visibility: hidden">--</p>
 				<a href="/dashboard" class="btn btn-primary p-1">Dashboard</a>
 				<a href="/account" class="btn btn-primary p-1">My Account</a>
+				<a onclick="logout()" class="btn btn-primary p-1" style="color: white;">Log Out</a>
 			</li>
 		</ul>
 	</nav>
@@ -396,13 +398,14 @@
 
 	</div>
 		<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+		<script type="text/javascript" src="/static/js/app.js"></script>
 		<script type="text/javascript" src="/static/js/popper.min.js"></script>
 		<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 		<script src="http://d3js.org/d3.v4.min.js"></script>
 		<script type="text/javascript" src="/static/js/techan/techan.min.js"></script>
 		<script type="text/javascript" src="./dashboard.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-		<script type="text/javascript" src="/static/js/app.js"></script>
+		
 	</body>
 	</html>
 
