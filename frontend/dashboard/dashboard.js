@@ -1,3 +1,5 @@
+var graphId = 0;
+
 function changeView(view) {
     var newClass = 'col-12';
     switch(view) {
@@ -9,10 +11,8 @@ function changeView(view) {
     reloadGraphs();
 }
 
-function generate() {
-    for(var i=0; i<4; i++) {
-        createGraph(`#graph${i}`)
-    }
+function createNewGraph() {
+   createGraph(`#graph${graphId++}`)
 }
 
 function createGraph(divName) {
