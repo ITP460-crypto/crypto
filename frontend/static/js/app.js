@@ -44,6 +44,7 @@ function doLogin(email, password, then) {
       sessionStorage.setItem("loggedIn", true)
       sessionStorage.setItem("email", email)
       sessionStorage.setItem("password", password)
+      sessionStorage.setItem("uid", user.uid)
       console.log(`Logged in successfully as ${email}`)
       //if they go to the homepage but they're already signed in, send them to the dash
       if (window.location.href.indexOf("dashboard") < 0) {
@@ -60,6 +61,16 @@ function doLogin(email, password, then) {
   });
 }
 
+function updateUserGraphs(graphs) {
+  const uid = sessionStorage.getItem("uid");
+  firebase.database().ref('graphs/'+uid).set(graphs);
+}
+
+function getUserGraphs() {
+  const uid = sessionStorage.getItem("uid");
+  return firebase.database().ref('graphs/'+uid).once('value')
+}
+
 function login() {
   var email = $("#email").val()
   var password = $("#password").val()
@@ -73,6 +84,7 @@ function logout() {
     sessionStorage.setItem("loggedIn", false)
     sessionStorage.setItem("email", "")
     sessionStorage.setItem("password", "")
+    sessionStorage.setItem("uid", "")
     window.location.href = "/"
   }).catch(function(error) {
     alert("Couldn't log out. Please close the window.")

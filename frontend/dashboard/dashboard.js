@@ -19,6 +19,7 @@ function changeView(view) {
     reloadGraphs();
 }
 
+// get data from form
 function createNewGraphs() {
    $('.select-pair:checked').each(function(index) {
       const currencyFrom = currencies[$(this).attr('id')];
@@ -26,27 +27,33 @@ function createNewGraphs() {
       const currencyStr = `${currencyFrom}/${currencyTo}`
       const url = `https://min-api.cryptocompare.com/data/histominute?fsym=${currencyFrom}&tsym=${currencyTo}`
       const divName = `graph${graphId++}`;
-      generate({divName, url, currencyStr});
+      drawGraphWrapper({id: graphId, divName, url, currencyStr});
       graphs.push({
-         divName: divName,
-         url: url,
-         currencyStr: currencyStr,
+         graphId,
+         url,
+         currencyStr,
       })
+      console.log(graphs)
+      // update to firebase
    })
+   updateUserGraphs(graphs);
    $('#addcoins :checked').prop('checked', false);
 }
 
-function generate({divName, url, currencyStr}) {
+// draw the graph and its buttons
+function drawGraphWrapper({id, divName, url, currencyStr}) {
    let graphTemplate = ($.templates("#graph-template").render({
+      id: id,
       graphId: divName,
       currencyStr: currencyStr,
       boxSize: boxSize
    }));
    $("#graphs-container").append(graphTemplate)
-   createGraph('#'+divName, url)
+   drawGraph('#'+divName, url)
 }
 
-function createGraph(divName, url) {
+// draw the graph itself
+function drawGraph(divName, url) {
     var margin = {top: 20, right: 20, bottom: 100, left: 50},
         margin2 = {top: 420, right: 20, bottom: 20, left: 50},
         width = d3.select(divName).node().getBoundingClientRect().width - margin.left - margin.right,
@@ -233,8 +240,27 @@ function createGraph(divName, url) {
 function reloadGraphs() {
    d3.selectAll('.ibox').remove(); 
    graphs.map((g) => {
-      generate(g)
+      drawGraphWrapper({
+         id: g.graphId,
+         divName: `graph${g.graphId}`,
+         ...g
+      })
    })
 }
+
+function deleteGraph(id) {
+   console.log(id)
+   graphs = graphs.filter((g) => (g.graphId) != id);
+   updateUserGraphs(graphs);
+   reloadGraphs();
+}
+
+getUserGraphs().then((data) => {
+   if(data.val()) {
+      graphs = data.val();
+      graphId = graphs[graphs.length-1].graphId + 1;
+      reloadGraphs();
+   }
+})
 
 d3.select(window).on('resize.updatesvg', reloadGraphs); 
