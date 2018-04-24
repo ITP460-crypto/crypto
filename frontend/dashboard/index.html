@@ -341,7 +341,7 @@
 					</div>
 
 					<div class="modal-footer">
-						<a href="/dashboard" class="btn btn-primary p-1">ADD</a>
+						<button onclick="createNewGraph()" class="btn btn-primary p-1">ADD</button>
 					</div>
 				</div>
 			</div>
@@ -462,7 +462,9 @@
 
 </script>
 
-
+<script id="graphTemplate" type="text/x-jsrender">
+	
+</script>
 
 
 
@@ -471,10 +473,10 @@
 		<script type="text/javascript" src="/static/js/app.js"></script>
 		<script type="text/javascript" src="/static/js/popper.min.js"></script>
 		<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/1.0.0-rc.70/jsrender.min.js"></script>
 		<script src="http://d3js.org/d3.v4.min.js"></script>
 		<script type="text/javascript" src="/static/js/techan/techan.min.js"></script>
 		<script type="text/javascript" src="./dashboard.js"></script>
-		
 	</body>
 	</html>
 
