@@ -1,21 +1,52 @@
-var graphId = 0;
+let boxSize = 'col-12';
+let graphId = 0;
+let graphs = [];
+const currencies = {
+   btc: 'BTC',
+   eth: 'ETH',
+   ltc: 'LTC',
+   xrp: 'XRP',
+   bch: 'BCH',
+   etc: 'ETC',
+}
 
 function changeView(view) {
-    var newClass = 'col-12';
     switch(view) {
-        case 1: newClass = 'col-12'; break;
-        case 2: newClass = 'col-6'; break;
-        case 3: newClass = 'col-4'; break;
+        case 1: boxSize = 'col-12'; break;
+        case 2: boxSize = 'col-6'; break;
+        case 3: boxSize = 'col-4'; break;
     }
-    $('.ibox').removeClass().addClass('ibox').addClass(newClass);
     reloadGraphs();
 }
 
-function createNewGraph() {
-   createGraph(`#graph${graphId++}`)
+function createNewGraphs() {
+   $('.select-pair:checked').each(function(index) {
+      const currencyFrom = currencies[$(this).attr('id')];
+      const currencyTo = 'USD';
+      const currencyStr = `${currencyFrom}/${currencyTo}`
+      const url = `https://min-api.cryptocompare.com/data/histominute?fsym=${currencyFrom}&tsym=${currencyTo}`
+      const divName = `graph${graphId++}`;
+      generate({divName, url, currencyStr});
+      graphs.push({
+         divName: divName,
+         url: url,
+         currencyStr: currencyStr,
+      })
+   })
+   $('#addcoins :checked').prop('checked', false);
 }
 
-function createGraph(divName) {
+function generate({divName, url, currencyStr}) {
+   let graphTemplate = ($.templates("#graph-template").render({
+      graphId: divName,
+      currencyStr: currencyStr,
+      boxSize: boxSize
+   }));
+   $("#graphs-container").append(graphTemplate)
+   createGraph('#'+divName, url)
+}
+
+function createGraph(divName, url) {
     var margin = {top: 20, right: 20, bottom: 100, left: 50},
         margin2 = {top: 420, right: 20, bottom: 20, left: 50},
         width = d3.select(divName).node().getBoundingClientRect().width - margin.left - margin.right,
@@ -36,8 +67,7 @@ function createGraph(divName) {
     var yVolume = d3.scaleLinear()
             .range([y(0), y(0.3)]);
 
-    var y2 = d3.scaleLinear()
-            .range([height2, 0]);
+    var y2 = d3.scaleLinear().range([height2, 0]);
 
     var brush = d3.brushX()
             .extent([[0, 0], [width, height2]])
@@ -143,18 +173,17 @@ function createGraph(divName) {
             .attr("class", "y axis")
             .call(yAxis2);
 
-    var result = d3.csv("/static/data/data.csv", function(error, data) {
+    var result = d3.json(url, function(error, data) {
         var accessor = candlestick.accessor(),
-            timestart = Date.now();
 
-        data = data.slice(0, 3500).map(function(d) {
+        data = data.Data.slice(0, 3500).map(function(d) {
             return {
-                date: parseDate(d.Date),
-                open: +d.Open,
-                high: +d.High,
-                low: +d.Low,
-                close: +d.Close,
-                volume: +d.Volume
+               date: +d.time*1000,
+                open: +d.open,
+                high: +d.high,
+                low: +d.low,
+                close: +d.close,
+                volume: d.volumeto - d.volumefrom
             };
         }).sort(function(a, b) { return d3.ascending(accessor.d(a), accessor.d(b)); });
 
@@ -176,7 +205,6 @@ function createGraph(divName) {
         x.zoomable().domain(x2.zoomable().domain());
         draw();
 
-        console.log("Render time: " + (Date.now()-timestart));
     });
 
     function brushed() {
@@ -203,8 +231,10 @@ function createGraph(divName) {
 }
 
 function reloadGraphs() {
-   d3.selectAll('.graph-wrapper').selectAll("*").remove(); 
-   generate();
+   d3.selectAll('.ibox').remove(); 
+   graphs.map((g) => {
+      generate(g)
+   })
 }
+
 d3.select(window).on('resize.updatesvg', reloadGraphs); 
-generate();
