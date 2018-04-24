@@ -249,7 +249,6 @@ function reloadGraphs() {
 }
 
 function deleteGraph(id) {
-   console.log(id)
    graphs = graphs.filter((g) => (g.graphId) != id);
    updateUserGraphs(graphs);
    reloadGraphs();

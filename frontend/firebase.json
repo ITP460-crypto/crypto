@@ -1,5 +1,10 @@
 {
-  "firebase": "crypto",
-  "public": "./",
-  "ignore": []
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
 }
