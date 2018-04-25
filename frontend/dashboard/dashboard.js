@@ -1,6 +1,10 @@
+// Main JavaScript file for the dashboard page
+
 let boxSize = 'col-12';
 let graphId = 0;
 let graphs = [];
+
+//If you want to add currencies you can do so here
 const currencies = {
    btc: 'BTC',
    eth: 'ETH',
@@ -19,7 +23,7 @@ function changeView(view) {
     reloadGraphs();
 }
 
-// get data from form
+// get data from form when the user submits
 function createNewGraphs() {
    $('.select-pair:checked').each(function(index) {
       const currencyFrom = currencies[$(this).attr('id')];
@@ -34,7 +38,6 @@ function createNewGraphs() {
          currencyStr,
       })
       console.log(graphs)
-      // update to firebase
    })
    updateUserGraphs(graphs);
    $('#addcoins :checked').prop('checked', false);
@@ -237,6 +240,8 @@ function drawGraph(divName, url) {
     }
 }
 
+// # Graph Functions Below
+//This refreshes all the graphs and posts new ones
 function reloadGraphs() {
    d3.selectAll('.ibox').remove(); 
    graphs.map((g) => {
@@ -248,12 +253,14 @@ function reloadGraphs() {
    })
 }
 
+//Deletes a graph by ID
 function deleteGraph(id) {
    graphs = graphs.filter((g) => (g.graphId) != id);
    updateUserGraphs(graphs);
    reloadGraphs();
 }
 
+//Reloads the graphs as they're pulled
 getUserGraphs().then((data) => {
    if(data.val()) {
       graphs = data.val();
@@ -261,5 +268,7 @@ getUserGraphs().then((data) => {
       reloadGraphs();
    }
 })
+
+// # Initialize the graph library
 
 d3.select(window).on('resize.updatesvg', reloadGraphs); 

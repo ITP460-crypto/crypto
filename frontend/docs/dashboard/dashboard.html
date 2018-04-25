@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>dashboard.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="../docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="dashboard.html">
+                  ./dashboard/dashboard.js
+                </a>
+              
+                
+                <a class="source" href="../static/js/app.html">
+                  ./static/js/app.js
+                </a>
+              
+                
+                <a class="source" href="../static/js/bootstrap.min.html">
+                  ./static/js/bootstrap.min.js
+                </a>
+              
+                
+                <a class="source" href="../static/js/jquery.min.html">
+                  ./static/js/jquery.min.js
+                </a>
+              
+                
+                <a class="source" href="../static/js/popper.min.html">
+                  ./static/js/popper.min.js
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>dashboard.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <p>Main JavaScript file for the dashboard page</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">let</span> boxSize = <span class="hljs-string">'col-12'</span>;
+<span class="hljs-keyword">let</span> graphId = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">let</span> graphs = [];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>If you want to add currencies you can do so here</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> currencies = {
+   <span class="hljs-attr">btc</span>: <span class="hljs-string">'BTC'</span>,
+   <span class="hljs-attr">eth</span>: <span class="hljs-string">'ETH'</span>,
+   <span class="hljs-attr">ltc</span>: <span class="hljs-string">'LTC'</span>,
+   <span class="hljs-attr">xrp</span>: <span class="hljs-string">'XRP'</span>,
+   <span class="hljs-attr">bch</span>: <span class="hljs-string">'BCH'</span>,
+   <span class="hljs-attr">etc</span>: <span class="hljs-string">'ETC'</span>,
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeView</span>(<span class="hljs-params">view</span>) </span>{
+    <span class="hljs-keyword">switch</span>(view) {
+        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: boxSize = <span class="hljs-string">'col-12'</span>; <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: boxSize = <span class="hljs-string">'col-6'</span>; <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: boxSize = <span class="hljs-string">'col-4'</span>; <span class="hljs-keyword">break</span>;
+    }
+    reloadGraphs();
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>get data from form when the user submits</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createNewGraphs</span>(<span class="hljs-params"></span>) </span>{
+   $(<span class="hljs-string">'.select-pair:checked'</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">index</span>) </span>{
+      <span class="hljs-keyword">const</span> currencyFrom = currencies[$(<span class="hljs-keyword">this</span>).attr(<span class="hljs-string">'id'</span>)];
+      <span class="hljs-keyword">const</span> currencyTo = <span class="hljs-string">'USD'</span>;
+      <span class="hljs-keyword">const</span> currencyStr = <span class="hljs-string">`<span class="hljs-subst">${currencyFrom}</span>/<span class="hljs-subst">${currencyTo}</span>`</span>
+      <span class="hljs-keyword">const</span> url = <span class="hljs-string">`https://min-api.cryptocompare.com/data/histohour?fsym=<span class="hljs-subst">${currencyFrom}</span>&amp;tsym=<span class="hljs-subst">${currencyTo}</span>&amp;limit=4000`</span>
+      <span class="hljs-keyword">const</span> divName = <span class="hljs-string">`graph<span class="hljs-subst">${graphId++}</span>`</span>;
+      drawGraphWrapper({<span class="hljs-attr">id</span>: graphId, divName, url, currencyStr});
+      graphs.push({
+         graphId,
+         url,
+         currencyStr,
+      })
+      <span class="hljs-built_in">console</span>.log(graphs)
+   })
+   updateUserGraphs(graphs);
+   $(<span class="hljs-string">'#addcoins :checked'</span>).prop(<span class="hljs-string">'checked'</span>, <span class="hljs-literal">false</span>);
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>draw the graph and its buttons</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">drawGraphWrapper</span>(<span class="hljs-params">{id, divName, url, currencyStr}</span>) </span>{
+   <span class="hljs-keyword">let</span> graphTemplate = ($.templates(<span class="hljs-string">"#graph-template"</span>).render({
+      <span class="hljs-attr">id</span>: id,
+      <span class="hljs-attr">graphId</span>: divName,
+      <span class="hljs-attr">currencyStr</span>: currencyStr,
+      <span class="hljs-attr">boxSize</span>: boxSize
+   }));
+   $(<span class="hljs-string">"#graphs-container"</span>).append(graphTemplate)
+   drawGraph(<span class="hljs-string">'#'</span>+divName, url)
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>draw the graph itself</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">drawGraph</span>(<span class="hljs-params">divName, url</span>) </span>{
+    <span class="hljs-keyword">var</span> margin = {<span class="hljs-attr">top</span>: <span class="hljs-number">20</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">20</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">100</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">50</span>},
+        margin2 = {<span class="hljs-attr">top</span>: <span class="hljs-number">420</span>, <span class="hljs-attr">right</span>: <span class="hljs-number">20</span>, <span class="hljs-attr">bottom</span>: <span class="hljs-number">20</span>, <span class="hljs-attr">left</span>: <span class="hljs-number">50</span>},
+        width = d3.select(divName).node().getBoundingClientRect().width - margin.left - margin.right,
+        height = <span class="hljs-number">500</span> - margin.top - margin.bottom,
+        height2 = <span class="hljs-number">500</span> - margin2.top - margin2.bottom;
+
+    <span class="hljs-keyword">var</span> parseDate = d3.timeParse(<span class="hljs-string">"%d-%b-%y"</span>);
+
+    <span class="hljs-keyword">var</span> x = techan.scale.financetime()
+            .range([<span class="hljs-number">0</span>, width]);
+
+    <span class="hljs-keyword">var</span> x2 = techan.scale.financetime()
+            .range([<span class="hljs-number">0</span>, width]);
+
+    <span class="hljs-keyword">var</span> y = d3.scaleLinear()
+            .range([height, <span class="hljs-number">0</span>]);
+
+    <span class="hljs-keyword">var</span> yVolume = d3.scaleLinear()
+            .range([y(<span class="hljs-number">0</span>), y(<span class="hljs-number">0.3</span>)]);
+
+    <span class="hljs-keyword">var</span> y2 = d3.scaleLinear().range([height2, <span class="hljs-number">0</span>]);
+
+    <span class="hljs-keyword">var</span> brush = d3.brushX()
+            .extent([[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [width, height2]])
+            .on(<span class="hljs-string">"end"</span>, brushed);
+
+    <span class="hljs-keyword">var</span> candlestick = techan.plot.candlestick()
+            .xScale(x)
+            .yScale(y);
+
+    <span class="hljs-keyword">var</span> volume = techan.plot.volume()
+            .xScale(x)
+            .yScale(yVolume);
+
+    <span class="hljs-keyword">var</span> close = techan.plot.close()
+            .xScale(x2)
+            .yScale(y2);
+
+    <span class="hljs-keyword">var</span> xAxis = d3.axisBottom(x);
+
+    <span class="hljs-keyword">var</span> xAxis2 = d3.axisBottom(x2);
+
+    <span class="hljs-keyword">var</span> yAxis = d3.axisLeft(y);
+
+    <span class="hljs-keyword">var</span> yAxis2 = d3.axisLeft(y2)
+            .ticks(<span class="hljs-number">0</span>);
+
+    <span class="hljs-keyword">var</span> ohlcAnnotation = techan.plot.axisannotation()
+            .axis(yAxis)
+            .orient(<span class="hljs-string">'left'</span>)
+            .format(d3.format(<span class="hljs-string">',.2f'</span>));
+
+    <span class="hljs-keyword">var</span> timeAnnotation = techan.plot.axisannotation()
+            .axis(xAxis)
+            .orient(<span class="hljs-string">'bottom'</span>)
+            .format(d3.timeFormat(<span class="hljs-string">'%Y-%m-%d'</span>))
+            .width(<span class="hljs-number">65</span>)
+            .translate([<span class="hljs-number">0</span>, height]);
+
+    <span class="hljs-keyword">var</span> crosshair = techan.plot.crosshair()
+            .xScale(x)
+            .yScale(y)
+            .xAnnotation(timeAnnotation)
+            .yAnnotation(ohlcAnnotation);
+
+    <span class="hljs-keyword">var</span> svg = d3.select(divName).append(<span class="hljs-string">"svg"</span>)
+            .attr(<span class="hljs-string">"width"</span>, <span class="hljs-string">'100%'</span>)
+            .attr(<span class="hljs-string">"height"</span>, height + margin.top + margin.bottom);
+
+    <span class="hljs-keyword">var</span> focus = svg.append(<span class="hljs-string">"g"</span>)
+            .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"focus"</span>)
+            .attr(<span class="hljs-string">"width"</span>, <span class="hljs-string">'100%'</span>)
+            .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"translate("</span> + margin.left + <span class="hljs-string">","</span> + margin.top + <span class="hljs-string">")"</span>);
+
+    focus.append(<span class="hljs-string">"clipPath"</span>)
+            .attr(<span class="hljs-string">"id"</span>, <span class="hljs-string">"clip"</span>)
+        .append(<span class="hljs-string">"rect"</span>)
+            .attr(<span class="hljs-string">"x"</span>, <span class="hljs-number">0</span>)
+            .attr(<span class="hljs-string">"y"</span>, y(<span class="hljs-number">1</span>))
+            .attr(<span class="hljs-string">"width"</span>, <span class="hljs-string">'100%'</span>)
+            .attr(<span class="hljs-string">"height"</span>, y(<span class="hljs-number">0</span>) - y(<span class="hljs-number">1</span>));
+
+    focus.append(<span class="hljs-string">"g"</span>)
+            .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"volume"</span>)
+            .attr(<span class="hljs-string">"clip-path"</span>, <span class="hljs-string">"url(#clip)"</span>);
+
+    focus.append(<span class="hljs-string">"g"</span>)
+            .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"candlestick"</span>)
+            .attr(<span class="hljs-string">"clip-path"</span>, <span class="hljs-string">"url(#clip)"</span>);
+
+    focus.append(<span class="hljs-string">"g"</span>)
+            .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"x axis"</span>)
+            .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"translate(0,"</span> + height + <span class="hljs-string">")"</span>);
+
+    focus.append(<span class="hljs-string">"g"</span>)
+            .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"y axis"</span>)
+        .append(<span class="hljs-string">"text"</span>)
+            .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"rotate(-90)"</span>)
+            .attr(<span class="hljs-string">"y"</span>, <span class="hljs-number">6</span>)
+            .attr(<span class="hljs-string">"dy"</span>, <span class="hljs-string">".71em"</span>)
+            .style(<span class="hljs-string">"text-anchor"</span>, <span class="hljs-string">"end"</span>)
+            .text(<span class="hljs-string">"Price ($)"</span>);
+
+    focus.append(<span class="hljs-string">'g'</span>)
+            .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"crosshair"</span>)
+            .call(crosshair);
+
+    <span class="hljs-keyword">var</span> context = svg.append(<span class="hljs-string">"g"</span>)
+            .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"context"</span>)
+            .attr(<span class="hljs-string">"width"</span>, <span class="hljs-string">'100%'</span>)
+            .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"translate("</span> + margin2.left + <span class="hljs-string">","</span> + margin2.top + <span class="hljs-string">")"</span>);
+
+    context.append(<span class="hljs-string">"g"</span>)
+            .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"close"</span>);
+
+    context.append(<span class="hljs-string">"g"</span>)
+            .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"pane"</span>);
+
+    context.append(<span class="hljs-string">"g"</span>)
+            .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"x axis"</span>)
+            .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"translate(0,"</span> + height2 + <span class="hljs-string">")"</span>);
+
+    context.append(<span class="hljs-string">"g"</span>)
+            .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"y axis"</span>)
+            .call(yAxis2);
+
+    <span class="hljs-keyword">var</span> result = d3.json(url, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, data</span>) </span>{
+        <span class="hljs-keyword">var</span> accessor = candlestick.accessor(),
+
+        data = data.Data.slice(<span class="hljs-number">0</span>, <span class="hljs-number">3500</span>).map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
+            <span class="hljs-keyword">return</span> {
+               <span class="hljs-attr">date</span>: +d.time*<span class="hljs-number">1000</span>,
+                <span class="hljs-attr">open</span>: +d.open,
+                <span class="hljs-attr">high</span>: +d.high,
+                <span class="hljs-attr">low</span>: +d.low,
+                <span class="hljs-attr">close</span>: +d.close,
+                <span class="hljs-attr">volume</span>: d.volumeto - d.volumefrom
+            };
+        }).sort(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b</span>) </span>{ <span class="hljs-keyword">return</span> d3.ascending(accessor.d(a), accessor.d(b)); });
+
+        x.domain(data.map(accessor.d));
+        x2.domain(x.domain());
+        y.domain(techan.scale.plot.ohlc(data, accessor).domain());
+        y2.domain(y.domain());
+        yVolume.domain(techan.scale.plot.volume(data).domain());
+
+        focus.select(<span class="hljs-string">"g.candlestick"</span>).datum(data);
+        focus.select(<span class="hljs-string">"g.volume"</span>).datum(data);
+
+        context.select(<span class="hljs-string">"g.close"</span>).datum(data).call(close);
+        context.select(<span class="hljs-string">"g.x.axis"</span>).call(xAxis2);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Associate the brush with the scale and render the brush only AFTER a domain has been applied</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        context.select(<span class="hljs-string">"g.pane"</span>).call(brush).selectAll(<span class="hljs-string">"rect"</span>).attr(<span class="hljs-string">"height"</span>, height2);
+
+        x.zoomable().domain(x2.zoomable().domain());
+        draw();
+
+    });
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">brushed</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> zoomable = x.zoomable(),
+            zoomable2 = x2.zoomable();
+
+        zoomable.domain(zoomable2.domain());
+        <span class="hljs-keyword">if</span>(d3.event.selection !== <span class="hljs-literal">null</span>) zoomable.domain(d3.event.selection.map(zoomable.invert));
+        draw();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> candlestickSelection = focus.select(<span class="hljs-string">"g.candlestick"</span>),
+            data = candlestickSelection.datum();
+        y.domain(techan.scale.plot.ohlc(data.slice.apply(data, x.zoomable().domain()), candlestick.accessor()).domain());
+        candlestickSelection.call(candlestick);
+        focus.select(<span class="hljs-string">"g.volume"</span>).call(volume);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>using refresh method is more efficient as it does not perform any data joins
+Use this if underlying data is not changing
+       svg.select(“g.candlestick”).call(candlestick.refresh);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        focus.select(<span class="hljs-string">"g.x.axis"</span>).call(xAxis);
+        focus.select(<span class="hljs-string">"g.y.axis"</span>).call(yAxis);
+    }
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <h1 id="graph-functions-below">Graph Functions Below</h1>
+<p>This refreshes all the graphs and posts new ones</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reloadGraphs</span>(<span class="hljs-params"></span>) </span>{
+   d3.selectAll(<span class="hljs-string">'.ibox'</span>).remove(); 
+   graphs.map(<span class="hljs-function">(<span class="hljs-params">g</span>) =&gt;</span> {
+      drawGraphWrapper({
+         <span class="hljs-attr">id</span>: g.graphId,
+         <span class="hljs-attr">divName</span>: <span class="hljs-string">`graph<span class="hljs-subst">${g.graphId}</span>`</span>,
+         ...g
+      })
+   })
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Deletes a graph by ID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteGraph</span>(<span class="hljs-params">id</span>) </span>{
+   graphs = graphs.filter(<span class="hljs-function">(<span class="hljs-params">g</span>) =&gt;</span> (g.graphId) != id);
+   updateUserGraphs(graphs);
+   reloadGraphs();
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Reloads the graphs as they’re pulled</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>getUserGraphs().then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {
+   <span class="hljs-keyword">if</span>(data.val()) {
+      graphs = data.val();
+      graphId = graphs[graphs.length<span class="hljs-number">-1</span>].graphId + <span class="hljs-number">1</span>;
+      reloadGraphs();
+   }
+})</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <h1 id="initialize-the-graph-library">Initialize the graph library</h1>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+d3.select(<span class="hljs-built_in">window</span>).on(<span class="hljs-string">'resize.updatesvg'</span>, reloadGraphs);</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
