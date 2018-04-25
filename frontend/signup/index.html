@@ -1,11 +1,14 @@
 <html>
 	<head>
-	<link href="account.css" rel="stylesheet">
 	<!-- account.css has the css for nav bar aka the header -->
+	<link href="account.css" rel="stylesheet">
 
+	<!-- bootstrap stylesheet -->
 		<link href="/static/css/bootstrap/bootstrap.css" rel="stylesheet">
 	</head>
 	<body>
+
+		<!-- navbar -->
 			<nav>
 				<ul style="padding-bottom: 52px !important" id="navbar" class="nav nav-pills justify-content-end fixed-top p-2">
 					<li class="nav-logo">
@@ -16,6 +19,9 @@
 					</li>
 				</ul>
 			</nav>
+
+		<!-- account div -->
+
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="form-signup-wrapper col-6 m-5 p-5">
@@ -37,11 +43,16 @@
 				</div>
 			</div>
 
+			<!-- notifications div -->
+
 			<div class="row justify-content-center">
 				<div class="form-signup-wrapper col-6 m-2 p-5">
 					<h1 class="section-title">Notifications</h1>
 					<p>Check the boxes below to receive email and/or text notifications when your favorite crypto currency changes significantly!</p>
 				<p><em>Date rates may apply</em></p>
+
+				<!-- form for notifications -->
+
 					<form class="form-signup">
 						<p>I would like to receive:</p>
 						<div class="form-check">
@@ -61,10 +72,14 @@
 			</div>
 		</div>
 		<footer class="footer">
+			<!-- creates account when necessary information is filled in -->
 			<div class="row justify-content-center">
 				<a class="btn btn-primary w-25 m-5" style="color: white;" onclick="createAccount()">Sign Up</a>
 			</div>
+
 		</footer>
+
+		<!-- javascript scripts -->
 		<script type="text/javascript" src="/static/js/jquery.min.js"></script>
 		<script type="text/javascript" src="/static/js/popper.min.js"></script>
 		<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>

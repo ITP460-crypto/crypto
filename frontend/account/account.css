@@ -1,27 +1,31 @@
+/*position of nav*/
 nav{
 	position: relative;
 }
 
+/*nav button details*/
 nav ul{
 	padding: 15px;
 	background-color: #08415c;
 }
 
+/*nav button padding*/
 nav li{
 	padding: 5px;
-	
-	
 }
 
+/*nav logo design elements*/
 .nav-logo{
 	position: absolute;
 	left: 20px;
 }
 
+/*upper left hand logo image*/
 img{
 	height: 45px;
 }
 
+/*upper left hand text of nav*/
 .nav-logo-text{
 	position: absolute;
 	left: 60px;
@@ -29,6 +33,7 @@ img{
 	font-family: "Nunito Sans";
 }
 
+/*body design*/
 .container{
 	margin-top: 50px;
 }
