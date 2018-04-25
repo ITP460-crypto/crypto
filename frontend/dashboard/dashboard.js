@@ -25,7 +25,7 @@ function createNewGraphs() {
       const currencyFrom = currencies[$(this).attr('id')];
       const currencyTo = 'USD';
       const currencyStr = `${currencyFrom}/${currencyTo}`
-      const url = `https://min-api.cryptocompare.com/data/histominute?fsym=${currencyFrom}&tsym=${currencyTo}`
+      const url = `https://min-api.cryptocompare.com/data/histohour?fsym=${currencyFrom}&tsym=${currencyTo}&limit=4000`
       const divName = `graph${graphId++}`;
       drawGraphWrapper({id: graphId, divName, url, currencyStr});
       graphs.push({
